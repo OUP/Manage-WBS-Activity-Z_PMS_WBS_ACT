@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:table="sap.ui.table" xmlns:smartField="sap.ui.comp.smartfield" xmlns="sap.m">
+    <table:Column width="150px" filterProperty="cur_sch" sortProperty="cur_sch" >
+        <Label text="{/#ZPMS_C_WBS_ACTIVITIESType/cur_sch/@sap:label}"/>
+        <table:customData>
+            <core:CustomData 
+                key="p13nData" 
+                value='\{"columnKey": "cur_sch", "columnIndex" : "3"}' />
+        </table:customData>
+        <table:template>
+            <smartField:SmartField value="{cur_sch}" editable="{oViewModel>/editable}"/>
+        </table:template>
+    </table:Column>
+    <table:Column width="150px" filterProperty="act_date" sortProperty="act_date">
+        <Label text="{/#ZPMS_C_WBS_ACTIVITIESType/act_date/@sap:label}"/>
+        <table:customData>
+            <core:CustomData 
+                key="p13nData" 
+                value='\{"columnKey": "act_date", "columnIndex" : "4"}' />
+        </table:customData>
+        <table:template>
+            <smartField:SmartField value="{act_date}" editable="{oViewModel>/editable}"/>
+        </table:template>
+    </table:Column>
+    <table:Column width="200px" filterProperty="long_txt" sortProperty="long_txt">
+        <Label text="{/#ZPMS_C_WBS_ACTIVITIESType/long_txt/@sap:label}"/>
+        <table:customData>
+            <core:CustomData 
+                key="p13nData" 
+                value='\{"columnKey": "long_txt", "columnIndex" : "5"}' />
+        </table:customData>
+        <table:template>
+            <smartField:SmartField value="{long_txt}" editable="{oViewModel>/editable}"/>
+        </table:template>
+    </table:Column>
+</core:FragmentDefinition>

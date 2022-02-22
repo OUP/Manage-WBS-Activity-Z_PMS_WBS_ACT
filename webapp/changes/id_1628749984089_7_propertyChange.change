@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1628749984089_7_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "oup.pms.zpmswbsact",
+    "packageName": "",
+    "content": {
+        "property": "enableAutoBinding",
+        "newValue": true
+    },
+    "selector": {
+        "id": "oup.pms.zpmswbsact::sap.suite.ui.generic.template.ListReport.view.ListReport::ZPMS_C_WBS_ACTIVITIES--listReport",
+        "idIsLocal": false,
+        "type": "sap.ui.comp.smarttable.SmartTable"
+    },
+    "layer": "VENDOR",
+    "texts": {},
+    "namespace": "apps/oup.pms.zpmswbsact/changes/",
+    "projectId": "oup.pms.zpmswbsact",
+    "creation": 1628749984089,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.71.40",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "1.0.0",
+        "to": "1.0.0",
+        "creation": "1.0.0"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

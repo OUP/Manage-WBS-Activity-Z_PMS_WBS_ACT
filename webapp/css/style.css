@@ -1,0 +1,8 @@
+/* set input border globally */
+.custom-border .sapMInputBaseInner {
+  border: 1px solid grey;
+}
+
+.sapMInputBaseInner {
+  border: 1px solid rgb(0 0 0 / 30%) !important;
+}

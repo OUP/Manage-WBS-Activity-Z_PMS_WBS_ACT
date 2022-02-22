@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:f="sap.ui.layout.form">
+
+   <Dialog
+        title="{i18n>scheduleText}"
+        contentWidth="50%"
+        contentHeight="375px"
+        class="sapUiSizeCompact">
+        
+        <!-- content -->
+        <VBox fitContainer="true">
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="12"
+                labelSpanL="12"
+                labelSpanM="12"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label text="{/#ZPMSSCHTEXT/Posid/@sap:label}" />
+                    <Text text="{Posid}" />
+                    <Label text="{/#ZPMSSCHTEXT/Aufnr/@sap:label}" />
+                    <Text text="{Aufnr}" />
+                    <Label text="{/#ZPMSSCHTEXT/SchText/@sap:label}" />
+                    <TextArea value="{SchText}" rows="10" growingMaxLines="10" growing="true" width="100%" height="100%" />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+
+        <!-- footer buttons -->
+        <buttons>
+            <Button text="{i18n>cancelBtn}" press=".onScheduleTextDialogCancel" />
+            <Button text="{i18n>saveBtn}" press=".onScheduleTextDialogSave" type="Emphasized" />
+        </buttons>
+   </Dialog>
+
+</core:FragmentDefinition>
