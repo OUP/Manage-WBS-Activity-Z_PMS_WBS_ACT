@@ -88,6 +88,15 @@ sap.ui.define(
 
         // add dependent
         _oView.addDependent(_oPDFViewer);
+
+        try {
+          const oSmartTable = this.getView().byId(
+            this.getView().getId() + "--listReport"
+          );
+          oSmartTable.setUseExportToExcel(true);
+        } catch (error) {
+          // un caught exception
+        }
       },
 
       onAfterRendering: function () {
@@ -138,9 +147,31 @@ sap.ui.define(
       onScheduleTextDialogCancel: () => _oScheduleTextDialog.close(),
 
       onScheduleTextDialogSave: () => {
-        const fnSuccess = (_) => {
-          MessageToast.show("Saved Successfully !");
-          _oScheduleTextDialog.close();
+        const fnSuccess = (oDataResponse) => {
+          try {
+            // check for odata response status code
+            const oResponse = oDataResponse.__batchResponses[0];
+
+            const bError = parseInt(oResponse.response.statusCode) >= 400;
+            if (bError) {
+              // error in odata request
+              // display error message
+              const sMessage = JSON.parse(oResponse.response.body).error.message
+                .value;
+              MessageBox.error(sMessage, {
+                styleClass: "sapUiSizeCompact",
+              });
+            }
+
+            // saved successfully
+            MessageToast.show("Saved Successfully !");
+
+            // if no errors, resolve the promise
+            _oScheduleTextDialog.close();
+          } catch (error) {
+            // error in odata request
+            _oScheduleTextDialog.close();
+          }
         };
 
         const fnError = (_) => {
@@ -209,15 +240,44 @@ sap.ui.define(
       },
 
       onTextDescDialogSave: () => {
-        const fnSuccess = (_) => {
-          MessageToast.show("Saved Successfully !");
-          _oTextDescDialog.close();
+        const fnSuccess = (oDataResponse) => {
+          try {
+            // check for odata response status code
+            const oResponse = oDataResponse.__batchResponses[0];
 
-          // destroy
-          _oTextDescDialog.destroy();
+            const bError = parseInt(oResponse.response.statusCode) >= 400;
+            if (bError) {
+              // error in odata request
+              // display error message
+              const sMessage = JSON.parse(oResponse.response.body).error.message
+                .value;
+              MessageBox.error(sMessage, {
+                styleClass: "sapUiSizeCompact",
+              });
+            } else {
+              // saved successfully
+              MessageToast.show("Saved Successfully !");
 
-          // reset to empty
-          _oTextDescDialog = undefined;
+              _oTextDescDialog.close();
+
+              // destroy
+              _oTextDescDialog.destroy();
+
+              // reset to empty
+              _oTextDescDialog = undefined;
+            }
+          } catch (error) {
+            // saved successfully
+            MessageToast.show("Saved Successfully !");
+
+            _oTextDescDialog.close();
+
+            // destroy
+            _oTextDescDialog.destroy();
+
+            // reset to empty
+            _oTextDescDialog = undefined;
+          }
         };
 
         const fnError = (_) => {
