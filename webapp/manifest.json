@@ -214,10 +214,11 @@
           "name": "sap.suite.ui.generic.template.ListReport",
           "list": true,
           "settings": {
+            "showCounts": true,
             "gridTable": true,
             "condensedTableLayout": true,
             "smartVariantManagement": true,
-            "enableTableFilterInPageVariant": true,
+            "enableTableFilterInPageVariant": false,
             "filterSettings": {
               "dateSettings": {
                 "useDateRange": true
