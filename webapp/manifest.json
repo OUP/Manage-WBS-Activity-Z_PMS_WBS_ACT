@@ -107,6 +107,8 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {
+          "useBatch": false,
+          "defaultUpdateMethod": "PUT",
           "defaultBindingMode": "TwoWay",
           "defaultCountMode": "Inline",
           "refreshAfterChange": false,
